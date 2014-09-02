@@ -23,6 +23,7 @@
             android:divider="#543456"
             android:dividerHeight="10sp"
             android:paddingLeft="8dp"
+            android:childIndicator="@android:drawable/ic_lock_lock"
             android:paddingRight="15dp"
             android:scrollbars="none" >
         </ExpandableListView>

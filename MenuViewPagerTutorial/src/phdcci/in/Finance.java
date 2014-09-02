@@ -83,27 +83,6 @@ public class Finance extends SherlockFragment {
 		expand = (ExpandableListView) view.findViewById(R.id.eventExpandlist);
 		cd = new ConnectionDetector(getActivity().getApplicationContext());
 		isInternetPresent = cd.isConnectingToInternet();
-
-//		if (isInternetPresent) {
-//			GetContacts Ldata = new GetContacts(getActivity());
-//			//context.deleteDatabase("EventDB");
-//			Ldata.execute();
-//			
-//			Toast.makeText(getActivity(),
-//					"DAta connect ", Toast.LENGTH_SHORT)
-//					.show();
-////	
-//		} else {
-//
-//			Toast.makeText(getActivity(),
-//					"Please Connect To Internet Connection", Toast.LENGTH_SHORT)
-//					.show();}
-		//GetContacts Ldata = new GetContacts(getActivity());
-		//context.deleteDatabase("EventDB");
-		//Ldata.execute();
-			//Log.d("111",GetContacts.contactList2.toString());
-			//adp = new EventAdapter(getActivity(),options,GetContacts.contactList2, GetContacts.contactList);
-			//expand.setAdapter(adp);
 		new xfuck().execute();
 
 		return view;

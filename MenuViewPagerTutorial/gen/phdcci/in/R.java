@@ -786,17 +786,23 @@ containing a value of this type.
         public static final int action_about=0x7f020055;
         public static final int action_settings=0x7f020056;
         public static final int backone=0x7f020057;
-        public static final int collections_cloud=0x7f020058;
-        public static final int drawer_shadow=0x7f020059;
-        public static final int ic_drawer=0x7f02005a;
-        public static final int ic_launcher=0x7f02005b;
-        public static final int innovation=0x7f02005c;
-        public static final int msme=0x7f02005d;
-        public static final int msmelogo1=0x7f02005e;
-        public static final int niesbud=0x7f02005f;
-        public static final int phdchamber=0x7f020060;
-        public static final int sidbi=0x7f020061;
-        public static final int summit=0x7f020062;
+        public static final int card_background_white=0x7f020058;
+        public static final int collections_cloud=0x7f020059;
+        public static final int drawer_shadow=0x7f02005a;
+        public static final int ic_drawer=0x7f02005b;
+        public static final int ic_launcher=0x7f02005c;
+        public static final int img_nature1=0x7f02005d;
+        public static final int img_nature2=0x7f02005e;
+        public static final int img_nature3=0x7f02005f;
+        public static final int img_nature4=0x7f020060;
+        public static final int img_nature5=0x7f020061;
+        public static final int innovation=0x7f020062;
+        public static final int msme=0x7f020063;
+        public static final int msmelogo1=0x7f020064;
+        public static final int niesbud=0x7f020065;
+        public static final int phdchamber=0x7f020066;
+        public static final int sidbi=0x7f020067;
+        public static final int summit=0x7f020068;
     }
     public static final class id {
         public static final int abs__action_bar=0x7f050022;
@@ -828,6 +834,9 @@ containing a value of this type.
         public static final int abs__title=0x7f05001b;
         public static final int abs__titleDivider=0x7f05001c;
         public static final int abs__up=0x7f05000b;
+        public static final int activity_googlecards_card_imageview=0x7f050033;
+        public static final int activity_googlecards_card_textview=0x7f050032;
+        public static final int activity_googlecards_listview=0x7f050031;
         public static final int content_frame=0x7f05002c;
         public static final int disableHome=0x7f050009;
         public static final int drawer_layout=0x7f05002b;
@@ -835,16 +844,16 @@ containing a value of this type.
         public static final int firstlayout=0x7f05002e;
         public static final int homeAsUp=0x7f050006;
         public static final int icon=0x7f050028;
-        public static final int imageView1=0x7f050032;
-        public static final int latestDate=0x7f050034;
-        public static final int latestheading=0x7f050033;
-        public static final int latestimg=0x7f050031;
-        public static final int latestvenue=0x7f050035;
+        public static final int imageView1=0x7f050035;
+        public static final int latestDate=0x7f050037;
+        public static final int latestheading=0x7f050036;
+        public static final int latestimg=0x7f050034;
+        public static final int latestvenue=0x7f050038;
         public static final int listMode=0x7f050002;
         public static final int listview_drawer=0x7f05002d;
-        public static final int menu_settings=0x7f050038;
+        public static final int menu_settings=0x7f05003b;
         public static final int normal=0x7f050001;
-        public static final int pagerTabStrip=0x7f050037;
+        public static final int pagerTabStrip=0x7f05003a;
         public static final int showCustom=0x7f050008;
         public static final int showHome=0x7f050005;
         public static final int showTitle=0x7f050007;
@@ -854,7 +863,7 @@ containing a value of this type.
         public static final int textViewChild=0x7f050027;
         public static final int title=0x7f050029;
         public static final int useLogo=0x7f050004;
-        public static final int viewPager=0x7f050036;
+        public static final int viewPager=0x7f050039;
         public static final int wrap_content=0x7f050000;
     }
     public static final class integer {
@@ -891,10 +900,11 @@ containing a value of this type.
         public static final int fragment_news=0x7f03001b;
         public static final int fragment_schemes=0x7f03001c;
         public static final int fragment_trading=0x7f03001d;
-        public static final int latestlistitem=0x7f03001e;
-        public static final int sherlock_spinner_dropdown_item=0x7f03001f;
-        public static final int sherlock_spinner_item=0x7f030020;
-        public static final int viewpager_main=0x7f030021;
+        public static final int googlecardadapter=0x7f03001e;
+        public static final int latestlistitem=0x7f03001f;
+        public static final int sherlock_spinner_dropdown_item=0x7f030020;
+        public static final int sherlock_spinner_item=0x7f030021;
+        public static final int viewpager_main=0x7f030022;
     }
     public static final class menu {
         public static final int activity_main=0x7f0c0000;
