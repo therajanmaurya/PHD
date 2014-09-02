@@ -1,22 +1,27 @@
 package phdcci.in;
 
-import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.view.MenuItem;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.Fragment;
+import java.io.FileOutputStream;
+
+import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.support.v4.view.GravityCompat;
+
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.MenuItem;
 
 public class MainActivity extends SherlockFragmentActivity {
 
 	// Declare Variables
+	Context c;
 	DrawerLayout mDrawerLayout;
 	ListView mDrawerList;
 	ActionBarDrawerToggle mDrawerToggle;
@@ -26,9 +31,12 @@ public class MainActivity extends SherlockFragmentActivity {
 	int[] icon;
 	Fragment fragment1 = new Fragment1();
 	Fragment fragment2 = new Viewpager();
+	//PositionReadWrite RW = new PositionReadWrite();
 	private CharSequence mDrawerTitle;
 	private CharSequence mTitle;
-
+	FileOutputStream fos;
+	static int ItemNumber;
+ 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -39,13 +47,17 @@ public class MainActivity extends SherlockFragmentActivity {
 		mTitle = mDrawerTitle = getTitle();
 
 		// Generate title
-		title = new String[] { "About", "MSME", "SIDBI", "PHD Chamber", "Niesbud" };
+		title = new String[] { "About", "MSME", "SIDBI", "PHD Chamber",
+				"Niesbud" };
 
 		// Generate subtitle
-		subtitle = new String[] { "About the app", "msme.gov.in","sidbi.com", "phdcci.in", "niesbud.nic.in" };
+		subtitle = new String[] { "About the app", "msme.gov.in", "sidbi.com",
+				"phdcci.in", "niesbud.nic.in" };
 
 		// Generate icon
-		icon = new int[] { R.drawable.action_about, R.drawable.action_settings,R.drawable.action_settings,R.drawable.action_settings,R.drawable.action_settings };
+		icon = new int[] { R.drawable.action_about,R.drawable.msme,
+				R.drawable.sidbi, R.drawable.phdchamber,
+				R.drawable.niesbud };
 
 		// Locate DrawerLayout in drawer_main.xml
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -119,7 +131,8 @@ public class MainActivity extends SherlockFragmentActivity {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position,
 				long id) {
-			selectItem(position);
+			ItemNumber = position;
+		    selectItem(position);
 		}
 	}
 
@@ -127,11 +140,22 @@ public class MainActivity extends SherlockFragmentActivity {
 
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 		// Locate Position
+
 		switch (position) {
 		case 0:
+
 			ft.replace(R.id.content_frame, fragment1);
 			break;
 		case 1:
+			ft.replace(R.id.content_frame, fragment2);
+			break;
+		case 2:
+			ft.replace(R.id.content_frame, fragment2);
+			break;
+		case 3:
+			ft.replace(R.id.content_frame, fragment2);
+			break;
+		case 4:
 			ft.replace(R.id.content_frame, fragment2);
 			break;
 		}
