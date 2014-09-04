@@ -83,51 +83,11 @@ public class GoogleCardsAdapter extends ArrayAdapter<Integer> {
 		}
          ImageView im = new ImageView(getContext());
          im = viewHolder.imageView;
-		// viewHolder.textView.setText(mContext.getString(R.string.abs__action_bar_home_description,position));
 		viewHolder.textView.setText(Ldesc.get(position));
 		imageloder.displayImage(ImageLink.get(position), im,
 				option, animateFirstListener);
-		// setImageView(viewHolder, position);
-
+		 
 		return view;
-	}
-
-	public void setImageView(final ViewHolder viewHolder, final int position) {
-		int imageResId;
-		switch (getItem(position) % 5) {
-		case 0:
-			imageResId = R.drawable.img_nature1;
-			break;
-		case 1:
-			imageResId = R.drawable.img_nature2;
-			break;
-		case 2:
-			imageResId = R.drawable.img_nature3;
-			break;
-		case 3:
-			imageResId = R.drawable.img_nature4;
-			break;
-		default:
-			imageResId = R.drawable.img_nature5;
-		}
-
-		Bitmap bitmap = getBitmapFromMemCache(imageResId);
-		if (bitmap == null) {
-			bitmap = BitmapFactory.decodeResource(mContext.getResources(),
-					imageResId);
-			addBitmapToMemoryCache(imageResId, bitmap);
-		}
-		viewHolder.imageView.setImageBitmap(bitmap);
-	}
-
-	private void addBitmapToMemoryCache(final int key, final Bitmap bitmap) {
-		if (getBitmapFromMemCache(key) == null) {
-			mMemoryCache.put(key, bitmap);
-		}
-	}
-
-	private Bitmap getBitmapFromMemCache(final int key) {
-		return mMemoryCache.get(key);
 	}
 
 	@SuppressWarnings({ "PackageVisibleField",

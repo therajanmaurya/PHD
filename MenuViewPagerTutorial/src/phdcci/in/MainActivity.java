@@ -2,6 +2,11 @@ package phdcci.in;
 
 import java.io.FileOutputStream;
 
+import phdcci.in.home.Home_finance;
+import phdcci.in.home.Home_marketing;
+import phdcci.in.home.Home_news;
+import phdcci.in.home.Home_schemes;
+import phdcci.in.home.Home_trading;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -30,12 +35,18 @@ public class MainActivity extends SherlockFragmentActivity {
 	String[] subtitle;
 	int[] icon;
 	Fragment fragment1 = new Fragment1();
-	Fragment fragment2 = new Viewpager();
+	Fragment fragment2 = new Home_finance();
+	Fragment fragment3 = new Home_marketing();
+	Fragment fragment4 = new Home_trading();
+	Fragment fragment5 = new Home_schemes();
+	Fragment fragment6 = new Home_news();
+	 
+	
 	//PositionReadWrite RW = new PositionReadWrite();
 	private CharSequence mDrawerTitle;
 	private CharSequence mTitle;
 	FileOutputStream fos;
-	static int ItemNumber;
+	public static int ItemNumber;
  
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -47,17 +58,17 @@ public class MainActivity extends SherlockFragmentActivity {
 		mTitle = mDrawerTitle = getTitle();
 
 		// Generate title
-		title = new String[] { "About", "MSME", "SIDBI", "PHD Chamber",
-				"Niesbud" };
+		title = new String[] { "About", "Finance", "Marketing", "Trading",
+				"Schemes","News" };
 
 		// Generate subtitle
-		subtitle = new String[] { "About the app", "msme.gov.in", "sidbi.com",
-				"phdcci.in", "niesbud.nic.in" };
+		//subtitle = new String[] { "About the app", "msme.gov.in", "sidbi.com",
+			//	"phdcci.in", "niesbud.nic.in" };
 
 		// Generate icon
-		icon = new int[] { R.drawable.action_about,R.drawable.msme,
-				R.drawable.sidbi, R.drawable.phdchamber,
-				R.drawable.niesbud };
+		icon = new int[] { R.drawable.action_about,R.drawable.action_about,
+				R.drawable.action_about, R.drawable.action_about,R.drawable.action_about,
+				R.drawable.action_about };
 
 		// Locate DrawerLayout in drawer_main.xml
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -150,13 +161,16 @@ public class MainActivity extends SherlockFragmentActivity {
 			ft.replace(R.id.content_frame, fragment2);
 			break;
 		case 2:
-			ft.replace(R.id.content_frame, fragment2);
+			ft.replace(R.id.content_frame, fragment3);
 			break;
 		case 3:
-			ft.replace(R.id.content_frame, fragment2);
+			ft.replace(R.id.content_frame, fragment4);
 			break;
 		case 4:
-			ft.replace(R.id.content_frame, fragment2);
+			ft.replace(R.id.content_frame, fragment5);
+			break;
+		case 5:
+			ft.replace(R.id.content_frame, fragment6);
 			break;
 		}
 		ft.commit();

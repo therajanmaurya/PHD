@@ -1,0 +1,75 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="15dp">
+
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent" >
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="150dp"
+        android:id="@+id/imageView"
+        android:src="@drawable/msmegov"
+        android:background="#ffffff"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Sh. Madhav Lal (Secretary)"
+            android:layout_below="@id/imageView"
+            android:id="@+id/madhav"/>
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/madhav"
+        android:id="@+id/scrollView">
+
+  <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Micro, Small and Medium Enterprises (MSME) sector has emerged as a highly vibrant and dynamic sector of the Indian economy over the last five decades. MSMEs not only play crucial role in providing large employment opportunities at comparatively lower capital cost than large industries but also help in industrialization of rural and backward areas, thereby, reducing regional imbalances, assuring more equitable distribution of national income and wealth. MSMEs are complementary to large industries as ancillary units and this sector contributes enormously to the socio-economic development of the country. "
+        android:id="@+id/textView"
+
+        android:textSize="20sp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+         />
+    </ScrollView>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Ministry (Secretariat)"
+            android:id="@+id/meeting"
+            android:layout_below="@id/scrollView"/>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Organisational Chart"
+            android:id="@+id/organise"
+            android:layout_below="@id/meeting"/>
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Organisation"
+            android:id="@+id/organisation"
+            android:layout_below="@id/organise"/>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Out reach of MSME"
+            android:id="@+id/outreach"
+            android:layout_below="@id/organisation"/>
+
+
+</RelativeLayout>
+</ScrollView>

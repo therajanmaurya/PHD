@@ -1,0 +1,75 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="15dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent" >
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="150dp"
+            android:id="@+id/imageView"
+            android:src="@drawable/sidbi1"
+            android:background="#ffffff"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Sushil Muhnot"
+            android:layout_below="@id/imageView"
+            android:id="@+id/sushil"/>
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sushil"
+            android:id="@+id/scrollView">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Small Industries Development Bank of India is a non-independent financial institution aimed to aid the growth and development of micro, small and medium-scale enterprises (MSME) in India. Set up on April 2, 1990 through an act of parliament, it was incorporated initially as a wholly owned subsidiary of Industrial Development Bank of India. Current shareholding is widely spread among various state-owned banks, insurance companies and financial institutions.[citation needed] Beginning as a refinancing agency to banks and state level financial institutions for their credit to small industries, it has expanded its activities, including direct credit to the SME through 100 branches in all major industrial clusters in India.[citation needed] Besides, it has been playing the developmnt role in several ways such as support to micro-finance institutions for capacity building and onlending. Recently it has opened seven branches christened as Micro Finance branches, aimed especially at dispensing loans up to INR5 lakh."
+                android:id="@+id/textView"
+
+                android:textSize="20sp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                />
+        </ScrollView>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Ministry (Secretariat)"
+            android:id="@+id/meeting"
+            android:layout_below="@id/scrollView"/>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Organisational Chart"
+            android:id="@+id/organise"
+            android:layout_below="@id/meeting"/>
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Organisation"
+            android:id="@+id/organisation"
+            android:layout_below="@id/organise"/>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Out reach of MSME"
+            android:id="@+id/outreach"
+            android:layout_below="@id/organisation"/>
+
+
+    </RelativeLayout>
+</ScrollView>

@@ -1,0 +1,139 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="15dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent" >
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="150dp"
+            android:id="@+id/imageView"
+            android:src="@drawable/msmegov"
+            android:background="#ffffff"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Sh. Madhav Lal (Secretary)"
+            android:layout_below="@id/imageView"
+            android:id="@+id/madhav"/>
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/madhav"
+            android:id="@+id/scrollView">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="PHD Chamber of Commerce and Industry, established in 1905, is a proactive and dynamic multi-State apex organisation working at the grass-root level and with strong national and international linkages.
+
+The Chamber acts as a catalyst in the promotion of industry, trade and entrepreneurship. PHD Chamber, through its research-based policy advocacy role, positively impacts the economic growth and development of the nation.
+
+PHD Chamber is more than an organisation of the business community, as it lives by the chosen motto ‘In Community's Life and Part of It’ and contributes significantly to socio-economic development and capacity building in several fields.Geographic Spread
+
+PHD Chamber's geographical span covers the 12 States of Bihar, Chhattisgarh, Delhi, Haryana, Himachal Pradesh, Jharkahnd, Jammu and Kashmir, Madhya Pradesh, Punjab, Rajasthan, Uttar Pradesh, Uttarakhand and the Union Territory of Chandigarh.
+
+Apart from its headquarters in New Delhi, the Chamber has regional offices in Jammu, Shimla, Chandigarh, Lucknow, Jaipur and Bhopal.
+
+Diversified and Large Membership Base
+
+PHD Chamber has a direct membership of over 1,600 corporate entities and serves more than 45,000 indirect members through 200 Association Members and 8 Secretarial Affiliates. The membership covers trade and industry.
+
+Excellent Conferencing Facilities
+
+PHD Houses at New Delhi and Chandigarh provide modern conferencing and catering facilities for corporate events, board meetings, training programmes, etc. With a modern auditorium, several conference and meeting rooms to suit different requirements and also a business centre, while the ambience is international, the cost is economical.
+
+Networking Opportunities
+
+PHD Chamber provides you excellent networking opportunities with government officials, diplomats, leading names from all spheres of life and also your business peers.
+
+Stay Ahead of Competition
+
+PHD Chamber provides regularly customised and value-added knowledge and information to you ranging from business opportunities to important policy changes to help you stay ahead of the competition.
+
+Interface with Government
+
+PHD Chamber provides an excellent forum to Indian companies for getting their problems redressed by and suggestions put up to relevant government authorities at the Central and State level, through both focussed interaction with government officials and submission of memoranda and representations.
+
+Advisory Role in Policy Formulation
+
+PHD Chamber is represented on more than 130 Central and State Advisory / Consultative bodies. Both Central and State Governments consult PHD Chamber before announcing or formulating any major economic / industrial policy.
+
+Contribute on Topical Issues
+
+PHD Chamber operates through various Expert Committees / Task Forces comprising of representatives of member companies and experts. Views of the Chamber are formulated on topical issues through deliberations in these Committees / Task Forces.
+
+Advisory Services to Business
+
+With the in-house expertise at PHD Chamber, we give business advice to Indian companies on most aspects of their business. These include, apart from national and regional economic and industry related issues, corporate affairs, taxation, finance and banking, capital markets, infrastructure and energy, labour and industrial relations, human resources and skill development, tourism, agri-business, environment, etc.
+
+Research and Policy Papers
+
+PHD Chamber produces well researched background and policy papers on topical issues to initiate informed debate and discussion.
+
+Taking Indian Industry Global
+
+PHD Chamber provides information on business opportunities abroad and a platform to interact with visiting foreign business delegations. We also mount business delegations to different countries to explore possibilities for enhancing two-way trade, technical / foreign collaborations, joint ventures and technology transfers.
+
+We are globally connected through institutional linkages with over 60 important foreign Chambers of Commerce.
+
+Certification Services
+
+PHD Chamber is authorised by the Government of India to issue certificate of origin (non-preferential) to Indian exporters. We also attest commercial documents of various types. Recommendation letters for visas for business promotion to foreign diplomatic missions in India are also issued for representatives of Indian companies.
+
+Capacity Building
+
+In its endeavour towards capacity building in the country, PHD Chamber organises focussed entrepreneurial development training programmes in cooperation with the Konrad Adenauer Foundation of Germany.
+
+Social Responsibility
+
+To discharge its social responsibility, the Chamber has three voluntary organisations for fulfilling its commitments to the cause of socio-economic development and to promote the role of corporate sector for the upliftment of rural masses.
+
+Through the support of members, the Chamber has been regularly contributing in cash and kind towards relief and rehabilitation of the victims of natural calamities and disasters."
+                android:id="@+id/textView"
+
+                android:textSize="20sp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                />
+        </ScrollView>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Ministry (Secretariat)"
+            android:id="@+id/meeting"
+            android:layout_below="@id/scrollView"/>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Organisational Chart"
+            android:id="@+id/organise"
+            android:layout_below="@id/meeting"/>
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Organisation"
+            android:id="@+id/organisation"
+            android:layout_below="@id/organise"/>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Out reach of MSME"
+            android:id="@+id/outreach"
+            android:layout_below="@id/organisation"/>
+
+
+    </RelativeLayout>
+</ScrollView>

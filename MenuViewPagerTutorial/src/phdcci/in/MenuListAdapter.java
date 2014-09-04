@@ -60,7 +60,7 @@ public class MenuListAdapter extends BaseAdapter {
 
 		// Set the results into TextViews
 		txtTitle.setText(mTitle[position]);
-		txtSubTitle.setText(mSubTitle[position]);
+		//txtSubTitle.setText(mSubTitle[position]);
 
 		// Set the results into ImageView
 		imgIcon.setImageResource(mIcon[position]);
