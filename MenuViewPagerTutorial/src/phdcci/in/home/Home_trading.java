@@ -14,7 +14,7 @@ public class Home_trading extends SherlockFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View rootView = inflater
-				.inflate(R.layout.companyname, container, false);
+				.inflate(R.layout.company_news, container, false);
 		return rootView;
 	}
 

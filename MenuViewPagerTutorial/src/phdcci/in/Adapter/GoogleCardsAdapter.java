@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -72,19 +73,21 @@ public class GoogleCardsAdapter extends ArrayAdapter<Integer> {
 			viewHolder = new ViewHolder();
 			viewHolder.textView = (TextView) view
 					.findViewById(R.id.activity_googlecards_card_textview);
-			view.setTag(viewHolder);
-
 			viewHolder.imageView = (ImageView) view
 					.findViewById(R.id.activity_googlecards_card_imageview);
+			view.setTag(viewHolder);
+
+			
 		} else {
 			viewHolder = (ViewHolder) view.getTag();
 		}
          ImageView im = new ImageView(getContext());
          im = viewHolder.imageView;
+        // Toast.makeText(getContext(), ImageLink.get(position), Toast.LENGTH_SHORT).show();
 		viewHolder.textView.setText(Ldesc.get(position));
 		imageloder.displayImage(ImageLink.get(position), im,
 				option, animateFirstListener);
-		 
+		
 		return view;
 	}
 

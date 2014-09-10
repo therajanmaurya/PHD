@@ -9,12 +9,12 @@
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="menu_github">Github</string>
-    <string name="googlecards">PHD Chamber</string>
+    <string name="googlecards">NEWS</string>
     <string name="gridview">Sidbi</string>
     <string name="appearance">Niesbud</string>
-    <string name="stickylistheaders">StickyListHeaders</string>
+    <string name="stickylistheaders">MSME</string>
     <string name="limit">Limit to 2</string>
-    <string name="itemmanipulation">MSME</string>
+    <string name="itemmanipulation">PHD Chamber</string>
     <string name="gridviewexample">GridView</string>
     <string name="draganddrop">Drag and Drop</string>
     <string name="dynamiclistview">DynamicListView</string>

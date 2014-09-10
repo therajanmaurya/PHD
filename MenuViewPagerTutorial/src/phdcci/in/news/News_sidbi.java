@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import phdcci.in.R;
+import phdcci.in.Adapter.Animation;
 import phdcci.in.Adapter.GoogleCardsAdapter;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -30,11 +31,11 @@ public class News_sidbi extends SherlockFragment {
 	public static final int INITIAL_DELAY_MILLIS = 300;
 	public static ArrayList<String> contactList = new ArrayList<String>();
 	public static ArrayList<String> contactList2 = new ArrayList<String>();
-	GoogleCardsAdapter mGoogleCardsAdapter;
-	protected ImageLoader imageLoader = ImageLoader.getInstance();
+	Animation mGoogleCardsAdapter;
+	public static ImageLoader imageLoader = ImageLoader.getInstance();
     ProgressDialog pDialog;
 	Context context;
-	static DisplayImageOptions options;
+	public static DisplayImageOptions options;
 	String url="http://pa1pal.tk/msme_latest.txt";
 	ListView listView;
 	int nn;
@@ -115,7 +116,7 @@ public class News_sidbi extends SherlockFragment {
 			// Dismiss the progress dialog
 //			if (pDialog.isShowing())
 //				pDialog.dismiss();
-			mGoogleCardsAdapter = new GoogleCardsAdapter(getActivity(), n,options,contactList2,contactList);
+			mGoogleCardsAdapter = new Animation(getActivity(),n,options,contactList2,contactList);
 			listView.setAdapter(mGoogleCardsAdapter);
 			 
 			 

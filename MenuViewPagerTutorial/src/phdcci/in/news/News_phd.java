@@ -45,6 +45,7 @@ public class News_phd extends SherlockFragment {
 		View view = inflater.inflate(R.layout.fragment_news, container, false);
 		listView = (ListView) view
 				.findViewById(R.id.activity_googlecards_listview);
+		
 		EventImageloder();
 		
 		GetContacts news = new GetContacts();
@@ -115,7 +116,7 @@ public class News_phd extends SherlockFragment {
 			// Dismiss the progress dialog
 //			if (pDialog.isShowing())
 //				pDialog.dismiss();
-			mGoogleCardsAdapter = new GoogleCardsAdapter(getActivity(), n,options,contactList2,contactList);
+			mGoogleCardsAdapter = new GoogleCardsAdapter(getActivity(),n,options,contactList2,contactList);
 			listView.setAdapter(mGoogleCardsAdapter);
 //			Toast.makeText(getActivity(), "text"+contactList.size(), Toast.LENGTH_SHORT).show();
 //			Toast.makeText(getActivity(), "image"+contactList2.size(), Toast.LENGTH_SHORT).show();

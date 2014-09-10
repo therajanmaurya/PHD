@@ -13,8 +13,8 @@ public class Home_finance extends SherlockFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View rootView = inflater
-				.inflate(R.layout.companyname, container, false);
+		View rootView = inflater.inflate(R.layout.company_news, container,
+				false);
 		return rootView;
 	}
 

@@ -2,6 +2,7 @@ package phdcci.in;
 
 import java.io.FileOutputStream;
 
+import phdcci.in.home.Home_About;
 import phdcci.in.home.Home_finance;
 import phdcci.in.home.Home_marketing;
 import phdcci.in.home.Home_news;
@@ -34,7 +35,7 @@ public class MainActivity extends SherlockFragmentActivity {
 	String[] title;
 	String[] subtitle;
 	int[] icon;
-	Fragment fragment1 = new Fragment1();
+	Fragment fragment1 = new Home_About();
 	Fragment fragment2 = new Home_finance();
 	Fragment fragment3 = new Home_marketing();
 	Fragment fragment4 = new Home_trading();

@@ -115,7 +115,7 @@ public class News_niesbud extends SherlockFragment {
 			// Dismiss the progress dialog
 //			if (pDialog.isShowing())
 //				pDialog.dismiss();
-			mGoogleCardsAdapter = new GoogleCardsAdapter(getActivity(), n,options,contactList2,contactList);
+			mGoogleCardsAdapter = new GoogleCardsAdapter(getActivity(),R.layout.niesbud_workshop,options,contactList2,contactList);
 			listView.setAdapter(mGoogleCardsAdapter);
 			 
 			 
