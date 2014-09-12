@@ -1,50 +1,95 @@
 package phdcci.in.home;
 
 import phdcci.in.R;
-import phdcci.in.news.New_sub_niesbud;
-import phdcci.in.news.News_sidbi;
+import phdcci.in.about.About_Sidbi;
+import phdcci.in.about.About_msme;
+import phdcci.in.about.About_niesbud;
+import phdcci.in.about.About_nsic;
+import phdcci.in.about.About_phd_champber;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 import com.actionbarsherlock.app.SherlockFragment;
 
 public class Home_About extends SherlockFragment {
 	View linear;
-	View rootView;
+	View rootView1;
 	@Override
 	public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
 			Bundle savedInstanceState) {
-		rootView = inflater.inflate(R.layout.about_all_screen, container, false);
+		View rootView = inflater.inflate(R.layout.about_all_screen, container, false);
 		
-		FrameLayout fr = (FrameLayout) rootView.findViewById(R.id.PhdFram);
+		FrameLayout fr = (FrameLayout) rootView.findViewById(R.id.phd);
 		FrameLayout fr1 = (FrameLayout) rootView.findViewById(R.id.niesbud);
+		FrameLayout fr2 = (FrameLayout) rootView.findViewById(R.id.sidbi);
+		FrameLayout fr3 = (FrameLayout) rootView.findViewById(R.id.msme);
+		FrameLayout fr4 = (FrameLayout) rootView.findViewById(R.id.nsic);
+		
+		
+		fr4.setOnClickListener(new View.OnClickListener() {
 
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+			 
+			    
+				About_nsic firstFragment2 = new  About_nsic();
+				firstFragment2.setArguments(getActivity().getIntent()
+						.getExtras());
+				getActivity().getSupportFragmentManager().beginTransaction()
+				
+						.replace(R.id.content_frame, firstFragment2).addToBackStack(null).commit();			
+			}
+		});
+		
+		fr2.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+			 
+			    
+				About_Sidbi firstFragment2 = new  About_Sidbi();
+				firstFragment2.setArguments(getActivity().getIntent()
+						.getExtras());
+				getActivity().getSupportFragmentManager().beginTransaction()
+				
+						.replace(R.id.content_frame, firstFragment2).addToBackStack(null).commit();			
+			}
+		});
+		
+		fr3.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+			 
+			    
+				About_msme firstFragment3 = new  About_msme();
+				firstFragment3.setArguments(getActivity().getIntent()
+						.getExtras());
+				getActivity().getSupportFragmentManager().beginTransaction()
+				
+						.replace(R.id.content_frame, firstFragment3).addToBackStack(null).commit();			
+			}
+		});
+		
 		fr.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-//				if (rootView != null) {
-//					
-//					rootView = inflater.inflate(R.layout.fragment_about_sidbi, container, false);
-//					return ;
-//			    }
-/*				Fragment f = new Fragment();
-				f.getActivity().addContentView(view, params)
-//				f.getLayoutInflater(R.layout.fragment_about_niesbud);
-				//f.onCreateView(inflater, container, savedInstanceState);
-				 
-				f.setArguments(getActivity().getIntent()
+			 
+			    
+				About_phd_champber firstFragment = new  About_phd_champber();
+				firstFragment.setArguments(getActivity().getIntent()
 						.getExtras());
 				getActivity().getSupportFragmentManager().beginTransaction()
-						.replace(R.id.content_frame, f).commit();
-*/			
+				
+						.replace(R.id.content_frame, firstFragment).addToBackStack(null).commit();			
 			}
 		});
 
@@ -53,7 +98,11 @@ public class Home_About extends SherlockFragment {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				 
+				About_niesbud firstFragment1 = new  About_niesbud();
+				firstFragment1.setArguments(getActivity().getIntent()
+						.getExtras());
+				getActivity().getSupportFragmentManager().beginTransaction()
+						.replace(R.id.content_frame, firstFragment1).addToBackStack(null).commit(); 
 			}
 		});
 		

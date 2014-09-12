@@ -2,9 +2,7 @@ package phdcci.in.home;
 
 import phdcci.in.R;
 import phdcci.in.news.New_sub_niesbud;
-import phdcci.in.news.News_phd;
 import phdcci.in.news.News_sidbi;
-import phducci.in.Viewpager.Viewpager_news;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,8 +20,9 @@ public class Home_news extends SherlockFragment {
 				.inflate(R.layout.company_news, container, false);
 		FrameLayout fr = (FrameLayout) rootView.findViewById(R.id.PhdFram);
 		FrameLayout fr1 = (FrameLayout) rootView.findViewById(R.id.niesbud);
+		FrameLayout fr2 = (FrameLayout) rootView.findViewById(R.id.msme);
 
-		fr.setOnClickListener(new View.OnClickListener() {
+		fr2.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -32,7 +31,7 @@ public class Home_news extends SherlockFragment {
 				firstFragment.setArguments(getActivity().getIntent()
 						.getExtras());
 				getActivity().getSupportFragmentManager().beginTransaction()
-						.replace(R.id.content_frame, firstFragment).commit();
+						.replace(R.id.content_frame, firstFragment).addToBackStack(null).commit();
 			}
 		});
 
@@ -45,7 +44,7 @@ public class Home_news extends SherlockFragment {
 				firstFragment1.setArguments(getActivity().getIntent()
 						.getExtras());
 				getActivity().getSupportFragmentManager().beginTransaction()
-						.replace(R.id.content_frame, firstFragment1).commit();
+						.replace(R.id.content_frame, firstFragment1).addToBackStack(null).commit();
 			}
 		});
 

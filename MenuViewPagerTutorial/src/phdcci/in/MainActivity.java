@@ -8,6 +8,8 @@ import phdcci.in.home.Home_marketing;
 import phdcci.in.home.Home_news;
 import phdcci.in.home.Home_schemes;
 import phdcci.in.home.Home_trading;
+import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -17,9 +19,18 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
@@ -52,6 +63,15 @@ public class MainActivity extends SherlockFragmentActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+		// Custom Action Bar
+		
+		getSupportActionBar().setHomeButtonEnabled(true);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+		getSupportActionBar().setCustomView(R.layout.action_bar);
+		
+		
 		// Get the view from drawer_main.xml
 		setContentView(R.layout.drawer_main);
 
@@ -67,9 +87,9 @@ public class MainActivity extends SherlockFragmentActivity {
 			//	"phdcci.in", "niesbud.nic.in" };
 
 		// Generate icon
-		icon = new int[] { R.drawable.action_about,R.drawable.action_about,
-				R.drawable.action_about, R.drawable.action_about,R.drawable.action_about,
-				R.drawable.action_about };
+		icon = new int[] { R.drawable.icon_about,R.drawable.icon_finance,
+				R.drawable.icon_marketing, R.drawable.icon_trading,R.drawable.icon_schems,
+				R.drawable.icon_news };
 
 		// Locate DrawerLayout in drawer_main.xml
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -215,5 +235,76 @@ public class MainActivity extends SherlockFragmentActivity {
 			// Otherwise, ask user if he wants to leave :)
 			super.onBackPressed();
 		}
+	}
+	
+	@SuppressLint("NewApi")
+	public void drawerToggle(View view)
+	{
+		ImageButton drawer = (ImageButton)findViewById(R.id.navigationButton);
+		if (mDrawerLayout.isDrawerOpen(mDrawerList)) {
+			mDrawerLayout.closeDrawer(mDrawerList);
+			TranslateAnimation anim = new TranslateAnimation(-5, 0, 0, 0);
+			anim.setDuration(300);
+			anim.setFillAfter(true);
+			view.startAnimation(anim);
+		} else {
+			mDrawerLayout.openDrawer(mDrawerList);
+			TranslateAnimation anim = new TranslateAnimation(0, -5, 0, 0);
+			anim.setDuration(300);
+			anim.setFillAfter(true);
+			view.startAnimation(anim);
+		}
+	}
+	
+	public void cardToggle(View view) throws InterruptedException
+	{
+		ImageView imageView = (ImageView)((View)((View) view.getParent()).getParent()).findViewById(R.id.activity_googlecards_card_imageview);
+		
+		if(imageView==null)
+		{
+			Toast.makeText(this, "null", Toast.LENGTH_SHORT).show();
+			return;
+		}
+		
+		if(imageView.getVisibility()==View.GONE)
+		{
+			ScaleAnimation anim = new ScaleAnimation(1, 1, 0, 1);
+			anim.setDuration(300);
+			anim.setFillAfter(true);
+			imageView.startAnimation(anim);
+			imageView.setVisibility(View.VISIBLE);
+		}
+		else
+		{
+			ScaleAnimation anim = new ScaleAnimation(1, 1, 1, 0);
+			anim.setDuration(300);
+			anim.setFillAfter(true);
+			imageView.startAnimation(anim);
+			anim.setAnimationListener(new AnimationListener() {
+				
+				@Override
+				public void onAnimationStart(Animation animation) {	}
+				
+				@Override
+				public void onAnimationRepeat(Animation animation) { }
+				
+				@Override
+				public void onAnimationEnd(Animation animation) {
+					ImageView imageView1 = (ImageView)findViewById(R.id.activity_googlecards_card_imageview);
+					imageView1.setVisibility(View.GONE);
+				}
+			});
+		}
+	}
+	
+	public void infoLayout(View view)
+	{
+/*		LinearLayout parentLayout = (LinearLayout)findViewById(R.layout.action_bar);
+		LayoutInflater inflater = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		if(inflater==null)
+			Toast.makeText(this, "null", Toast.LENGTH_SHORT).show();
+		else
+			parentLayout.addView(inflater.inflate(R.layout.action_bar, parentLayout, false), 1);*/
+		setContentView(R.layout.action_bar);
 	}
 }

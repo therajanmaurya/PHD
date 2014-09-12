@@ -28,7 +28,7 @@ public class New_sub_niesbud extends SherlockFragment {
 				firstFragment1.setArguments(getActivity().getIntent()
 						.getExtras());
 				getActivity().getSupportFragmentManager().beginTransaction()
-						.replace(R.id.content_frame, firstFragment1).commit();
+						.replace(R.id.content_frame, firstFragment1).addToBackStack(null).commit();
 			}
 		});
 		 
@@ -41,7 +41,7 @@ public class New_sub_niesbud extends SherlockFragment {
 					firstFragment1.setArguments(getActivity().getIntent()
 							.getExtras());
 					getActivity().getSupportFragmentManager().beginTransaction()
-							.replace(R.id.content_frame, firstFragment1).commit();
+							.replace(R.id.content_frame, firstFragment1).addToBackStack(null).commit();
 				}
 			});
 		 workshop.setOnClickListener(new View.OnClickListener() {
@@ -53,7 +53,7 @@ public class New_sub_niesbud extends SherlockFragment {
 					firstFragment1.setArguments(getActivity().getIntent()
 							.getExtras());
 					getActivity().getSupportFragmentManager().beginTransaction()
-							.replace(R.id.content_frame, firstFragment1).commit();
+							.replace(R.id.content_frame, firstFragment1).addToBackStack(null).commit();
 				}
 			});
 		

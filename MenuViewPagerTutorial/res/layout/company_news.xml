@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|center_horizontal"
                 android:scaleType="center"
-                android:src="@drawable/img_main_googlecards" />
+                android:src="@drawable/news" />
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -166,6 +166,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="2dp"
                 android:layout_weight="1"
+                android:id="@+id/msme"
                 android:background="@color/purple_transparent"
                 android:foreground="?android:attr/selectableItemBackground"
                  >
