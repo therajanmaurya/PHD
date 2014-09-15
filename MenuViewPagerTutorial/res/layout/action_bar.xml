@@ -37,6 +37,6 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
             android:onClick="infoLayout"
-            android:background="@drawable/three_bars" />
+            android:background="@drawable/ic_launcher" />
         
 </RelativeLayout>

@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|center_horizontal"
                 android:scaleType="center"
-                android:src="@drawable/news" />
+                android:src="@drawable/news_icon" />
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -70,7 +70,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="right|bottom"
                     android:scaleType="center"
-                    android:src="@drawable/img_main_itemmanipulation" />
+                    android:src="@drawable/about_phd_chamber" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -83,7 +83,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
                         android:fontFamily="sans-serif-condensed"
-                        android:text="@string/itemmanipulation"
+                        android:text="News\nPHD Chamber"
                         android:textColor="@android:color/white"
                         android:textSize="20sp" />
                 </FrameLayout>
@@ -103,7 +103,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="right|bottom"
                     android:scaleType="center"
-                    android:src="@drawable/img_main_appearance" />
+                    android:src="@drawable/about_niesbud" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -116,7 +116,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
                         android:fontFamily="sans-serif-condensed"
-                        android:text="@string/appearance"
+                        android:text="News \nNiesbud"
                         android:textColor="@android:color/white"
                         android:textSize="20sp" />
                 </FrameLayout>
@@ -134,15 +134,16 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="2dp"
                 android:layout_weight="1"
+                android:id="@+id/Nsidbi"
                 android:foreground="?android:attr/selectableItemBackground"
                >
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right|bottom"
+                    android:layout_gravity="center"
                     android:scaleType="center"
-                    android:src="@drawable/img_main_gridview" />
+                    android:src="@drawable/sidbi1" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -155,7 +156,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
                         android:fontFamily="sans-serif-condensed"
-                        android:text="@string/gridview"
+                        android:text="News \nSIDBI"
                         android:textColor="@android:color/white"
                         android:textSize="20sp" />
                 </FrameLayout>
@@ -174,9 +175,9 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right|bottom"
+                    android:layout_gravity="center"
                     android:scaleType="center"
-                    android:src="@drawable/img_main_stickylistheaders" />
+                    android:src="@drawable/msmegov" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -189,7 +190,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
                         android:fontFamily="sans-serif-condensed"
-                        android:text="@string/stickylistheaders"
+                        android:text="News \nMSME"
                         android:textColor="@android:color/white"
                         android:textSize="20sp" />
                 </FrameLayout>

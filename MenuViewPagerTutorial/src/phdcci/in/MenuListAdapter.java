@@ -53,7 +53,6 @@ public class MenuListAdapter extends BaseAdapter {
 
 		// Locate the TextViews in drawer_list_item.xml
 		txtTitle = (TextView) itemView.findViewById(R.id.title);
-		txtSubTitle = (TextView) itemView.findViewById(R.id.subtitle);
 
 		// Locate the ImageView in drawer_list_item.xml
 		imgIcon = (ImageView) itemView.findViewById(R.id.icon);

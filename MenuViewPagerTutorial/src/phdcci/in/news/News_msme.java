@@ -1,145 +1,108 @@
 package phdcci.in.news;
 
-import java.util.ArrayList;
+import java.io.IOException;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 
-import phdcci.in.MainActivity;
+import phdcci.in.ConnectionDetector;
 import phdcci.in.R;
-import phdcci.in.Adapter.GoogleCardsAdapter;
 import android.app.ProgressDialog;
-import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockFragment;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
-import com.teamDPSR.util.ServiceHandler;
 
 public class News_msme extends SherlockFragment {
-	int n =  MainActivity.ItemNumber;
-	public static final int INITIAL_DELAY_MILLIS = 300;
-	public static ArrayList<String> contactList = new ArrayList<String>();
-	public static ArrayList<String> contactList2 = new ArrayList<String>();
-	GoogleCardsAdapter mGoogleCardsAdapter;
-	public static ImageLoader imageLoader = ImageLoader.getInstance();
-    ProgressDialog pDialog;
-	Context context;
-	public static DisplayImageOptions options;
-	String url="http://pa1pal.tk/msme_latest.txt";
-	ListView listView;
-	int nn;
+	WebView web;
+	ProgressDialog pDialog;
+	String url = "http://sidbi.com/";
+	ConnectionDetector cd;
+	Boolean isInternetPresent = false;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// Get the view from fragmenttab1.xml
-		View view = inflater.inflate(R.layout.fragment_news, container, false);
-		listView = (ListView) view
-				.findViewById(R.id.activity_googlecards_listview);
-		EventImageloder();
-		
-		GetContacts news = new GetContacts();
-		news.execute();
+		View view = inflater.inflate(R.layout.webview, container, false);
+		web = null;
+		web = (WebView)view.findViewById(R.id.Fwebview);
+		cd = new ConnectionDetector(getActivity().getApplicationContext());
+		isInternetPresent = cd.isConnectingToInternet();
+		if (isInternetPresent) {
+			new MyTask().execute();
 
-		
+		} else {
+			Toast toast = Toast.makeText(getActivity(),
+					"internet connection Error", Toast.LENGTH_SHORT);
+			toast.setGravity(Gravity.CENTER, 0, 0);		
+			toast.show();
+		}
+		web.setWebViewClient(new WebViewClient(){
+		    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+		        if (url != null) {
+		            view.getContext().startActivity(
+		                new Intent(Intent.ACTION_VIEW, Uri.parse("http://sidbi.com"+url)));
+		            return true;
+		        } else {
+		            return false;
+		        }
+		    }
+		});
 		
 		return view;
 	}
-	
-	
-	public class GetContacts extends AsyncTask<Void, Void, Void> {
-		
 	 
-		private static final String TAG_ID = "image_url";
-		private static final String TAG_dec = "description";
-		
+	
+	private class MyTask extends AsyncTask<Void, Void, String> {
+
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			// Showing progress dialog
-			//pDialog=ProgressDialog.show(, title, message)
-//			pDialog = new ProgressDialog(context);
-//			pDialog.setMessage("Please wait...");
-//			pDialog.setCancelable(false);
-//			pDialog.show();
+			pDialog = ProgressDialog.show(getActivity(), null,
+					"Loading ........", true);
+			pDialog.setCancelable(true);
 
 		}
-
-		@Override
-		protected Void doInBackground(Void... arg0) {
-			// Creating service handler class instance
-			ServiceHandler sh = new ServiceHandler();
-
-			// Making a request to url and getting response
-			String jsonStr = sh.makeServiceCall(url, ServiceHandler.GET);
-
-			Log.d("Response: ", "> " + jsonStr);
-
-			if (jsonStr != null) {
-				try {
-					JSONArray jsonObj = new JSONArray(jsonStr);
-					//contacts=jsonObj.getJSONArray(jsonStr);
-					Log.d("Response007: ", "> " +jsonObj.toString());
-					for (int i = 0; i < jsonObj.length(); i++) {
-						JSONObject c = jsonObj.getJSONObject(i);
-						String id = c.getString(TAG_ID);
-						String id1=c.getString(TAG_dec);
-						Log.e("fuck007",id);
-						Log.d("fuck007",id1);
-						// adding contact to contact list
-						contactList.add(id);
-						contactList2.add(id1);
-					}
-				} catch (JSONException e) {
-					e.printStackTrace();
-				}
-			} else {
-				Log.e("ServiceHandler", "Couldn't get any data from the url");
+		String html ;
+		String mime ;
+		String encoding;
+	  @Override
+	  protected String doInBackground(Void... params) {
+		  Document doc = null;
+			try {
+				doc = Jsoup.connect(url).get();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-
+			Elements ele = doc.select("div.pane-content");
+			html = ele.toString();
+			mime = "text/html";
+			encoding = "utf-8";
+			
 			return null;
-		}
+	  } 
 
-		@Override
-		protected void onPostExecute(Void result) {
-			super.onPostExecute(result);
-			// Dismiss the progress dialog
-//			if (pDialog.isShowing())
-//				pDialog.dismiss();
-			mGoogleCardsAdapter = new GoogleCardsAdapter(getActivity(), R.layout.niesbud_workshop,options,contactList2,contactList);
-			listView.setAdapter(mGoogleCardsAdapter);
-			 
-			 
-		}
 
+	  @Override
+	  protected void onPostExecute(String result) {        
+	    //if you had a ui element, you could display the title
+		 pDialog.dismiss();
+		  web.loadData(html, mime, encoding);
+		  web.requestFocus(View.OVER_SCROLL_NEVER);
+		  
+		  
+	  }
 	}
-	
-	public void EventImageloder() {
 
-		DisplayImageOptions displayimageOptions = new DisplayImageOptions.Builder()
-				.cacheInMemory().cacheOnDisc().build();
-		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
-				getActivity().getApplicationContext())
-				.defaultDisplayImageOptions(displayimageOptions).build();
-		ImageLoader.getInstance().init(config);
-
-		options = new DisplayImageOptions.Builder()
-				.showImageOnLoading(R.drawable.ic_launcher)
-				.showImageForEmptyUri(R.drawable.ic_launcher)
-				.showImageOnFail(R.drawable.ic_launcher).cacheInMemory(true)
-				.cacheOnDisk(true).considerExifParams(true)
-				.displayer(new RoundedBitmapDisplayer(20)).build();
-
-	}
-	
 }

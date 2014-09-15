@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    android:background="#b989d3"
     android:padding="15dp">
 
     <RelativeLayout
@@ -27,7 +28,7 @@
         <ScrollView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/madhav"
+            android:layout_below="@+id/Bphd"
             android:id="@+id/scrollView">
 
             <TextView

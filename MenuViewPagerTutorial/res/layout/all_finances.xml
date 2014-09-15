@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|center_horizontal"
                 android:scaleType="center"
-                android:src="@drawable/img_main_googlecards" />
+                android:src="@drawable/market" />
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -101,9 +101,9 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right|bottom"
+                    android:layout_gravity="center"
                     android:scaleType="center"
-                    android:src="@drawable/img_main_appearance" />
+                    android:src="@drawable/market2" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -141,9 +141,9 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right|bottom"
+                    android:layout_gravity="center"
                     android:scaleType="center"
-                    android:src="@drawable/img_main_gridview" />
+                    android:src="@drawable/finance3" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -175,9 +175,9 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right|bottom"
+                    android:layout_gravity="center"
                     android:scaleType="center"
-                    android:src="@drawable/img_main_stickylistheaders" />
+                    android:src="@drawable/finance2" />
 
                 <FrameLayout
                     android:layout_width="match_parent"

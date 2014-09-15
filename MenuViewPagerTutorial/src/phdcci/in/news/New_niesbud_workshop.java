@@ -6,38 +6,40 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import phdcci.in.ConnectionDetector;
 import phdcci.in.R;
+import phdcci.in.ServiceHandler;
 import phdcci.in.Adapter.Adapter_niesbud_workshop;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockFragment;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.teamDPSR.util.ServiceHandler;
 
 public class New_niesbud_workshop extends SherlockFragment {
 	int n;
 	public static final int INITIAL_DELAY_MILLIS = 300;
-	public static ArrayList<String> contactList = new ArrayList<String>();
-	public static ArrayList<String> contactList2 = new ArrayList<String>();
+	public static ArrayList<String> contactList ;
+	public static ArrayList<String> contactList2 ;
 	Adapter_niesbud_workshop mGoogleCardsAdapter;
 	protected ImageLoader imageLoader = ImageLoader.getInstance();
 	ProgressDialog pDialog;
+	ProgressBar pro;
 	Context context;
+	ConnectionDetector cd;
+	Boolean isInternetPresent = false;
+
 	static DisplayImageOptions options;
 	String url = "http://pa1pal.tk/niesbud_workshop.txt";
 	ListView listView;
@@ -49,11 +51,27 @@ public class New_niesbud_workshop extends SherlockFragment {
 		// Get the view from fragmenttab1.xml
 		final View view = inflater.inflate(R.layout.fragment_news, container,
 				false);
+		contactList = null;
+		contactList2 = null;
+		contactList = new ArrayList<String>();
+		contactList2 = new ArrayList<String>();
 		listView = (ListView) view
 				.findViewById(R.id.activity_googlecards_listview);
 
-		GetContacts news = new GetContacts();
-		news.execute();
+		cd = new ConnectionDetector(getActivity().getApplicationContext());
+		isInternetPresent = cd.isConnectingToInternet();
+		if (isInternetPresent) {
+			GetContacts news = new GetContacts();
+			news.execute();
+
+		} else {
+
+			Toast toast = Toast.makeText(getActivity(),
+					"internet connection Error", Toast.LENGTH_SHORT);
+			toast.setGravity(Gravity.CENTER, 0, 0);		
+			toast.show();
+		}
+		
 
  
 		return view;
@@ -67,13 +85,11 @@ public class New_niesbud_workshop extends SherlockFragment {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			// Showing progress dialog
-			// pDialog=ProgressDialog.show(, title, message)
-			// pDialog = new ProgressDialog(context);
-			// pDialog.setMessage("Please wait...");
-			// pDialog.setCancelable(false);
-			// pDialog.show();
-
+			pro = new ProgressBar(getActivity());
+			pro.setVisibility(View.VISIBLE);
+			pDialog = ProgressDialog.show(getActivity(), null,
+					"Loading ........", true);
+			pDialog.setCancelable(true);
 		}
 
 		@Override
@@ -116,7 +132,8 @@ public class New_niesbud_workshop extends SherlockFragment {
 			super.onPostExecute(result);
 			// Dismiss the progress dialog
 			// if (pDialog.isShowing())
-			// pDialog.dismiss();
+			 pDialog.dismiss();
+			pro.setVisibility(View.GONE);
 			mGoogleCardsAdapter = new Adapter_niesbud_workshop(getActivity()
 					.getApplicationContext(), R.layout.niesbud_workshop,
 					options, contactList2, contactList);

@@ -6,72 +6,83 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import phdcci.in.ConnectionDetector;
 import phdcci.in.R;
-import phdcci.in.Adapter.GoogleCardsAdapter;
+import phdcci.in.ServiceHandler;
+import phdcci.in.Adapter.Adapter_phd_news;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockFragment;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
-import com.teamDPSR.util.ServiceHandler;
 
 public class News_phd extends SherlockFragment {
-	int n ;
+	int n;
 	public static final int INITIAL_DELAY_MILLIS = 300;
-	public static ArrayList<String> contactList = new ArrayList<String>();
-	public static ArrayList<String> contactList2 = new ArrayList<String>();
-	GoogleCardsAdapter mGoogleCardsAdapter;
+	public static ArrayList<String> contactList;
+
+	Adapter_phd_news mGoogleCardsAdapter;
 	protected ImageLoader imageLoader = ImageLoader.getInstance();
-    ProgressDialog pDialog;
+	ProgressDialog pDialog;
 	Context context;
+	ConnectionDetector cd;
+	Boolean isInternetPresent = false;
 	static DisplayImageOptions options;
-	String url="http://pa1pal.tk/msme_latest.txt";
+	String url = "http://pa1pal.tk/phd_latest.txt";
 	ListView listView;
 	int nn;
+	View view;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// Get the view from fragmenttab1.xml
-		View view = inflater.inflate(R.layout.fragment_news, container, false);
+		view = inflater.inflate(R.layout.fragment_news, container, false);
 		listView = (ListView) view
 				.findViewById(R.id.activity_googlecards_listview);
-		
-		EventImageloder();
-		
-		GetContacts news = new GetContacts();
-		news.execute();
+		contactList = null;
+		contactList = new ArrayList<String>();
 
-		
-		
+		cd = new ConnectionDetector(getActivity().getApplicationContext());
+		isInternetPresent = cd.isConnectingToInternet();
+		if (isInternetPresent) {
+			GetContacts news = new GetContacts();
+			news.execute();
+
+		} else {
+			Toast toast = Toast.makeText(getActivity(),
+					"internet connection Error", Toast.LENGTH_SHORT);
+			toast.setGravity(Gravity.CENTER, 0, 0);
+			toast.show();
+		}
+
 		return view;
 	}
-	
-	
+
 	public class GetContacts extends AsyncTask<Void, Void, Void> {
-		
-	 
-		private static final String TAG_ID = "image_url";
-		private static final String TAG_dec = "description";
-		
+
+		private static final String TAG_ID = "news";
+
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
 			// Showing progress dialog
-			//pDialog=ProgressDialog.show(, title, message)
-//			pDialog = new ProgressDialog(context);
-//			pDialog.setMessage("Please wait...");
-//			pDialog.setCancelable(false);
-//			pDialog.show();
+			// pDialog=ProgressDialog.show(, title, message)
+			pDialog = ProgressDialog.show(getActivity(), null,
+					"Loading ........", true);
+			pDialog.setCancelable(true);
 
 		}
 
@@ -88,17 +99,14 @@ public class News_phd extends SherlockFragment {
 			if (jsonStr != null) {
 				try {
 					JSONArray jsonObj = new JSONArray(jsonStr);
-					//contacts=jsonObj.getJSONArray(jsonStr);
-					Log.d("Response007: ", "> " +jsonObj.toString());
+					// contacts=jsonObj.getJSONArray(jsonStr);
+					Log.d("Response007: ", "> " + jsonObj.toString());
 					for (int i = 0; i < jsonObj.length(); i++) {
 						JSONObject c = jsonObj.getJSONObject(i);
 						String id = c.getString(TAG_ID);
-						String id1=c.getString(TAG_dec);
-						Log.e("fuck007",id);
-						Log.d("fuck007",id1);
-						// adding contact to contact list
+
 						contactList.add(id);
-						contactList2.add(id1);
+
 					}
 				} catch (JSONException e) {
 					e.printStackTrace();
@@ -114,18 +122,20 @@ public class News_phd extends SherlockFragment {
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
 			// Dismiss the progress dialog
-//			if (pDialog.isShowing())
-//				pDialog.dismiss();
-			mGoogleCardsAdapter = new GoogleCardsAdapter(getActivity(),n,options,contactList2,contactList);
+			// if (pDialog.isShowing())
+			pDialog.dismiss();
+			mGoogleCardsAdapter = new Adapter_phd_news(getActivity(), n,
+					options, contactList);
 			listView.setAdapter(mGoogleCardsAdapter);
-//			Toast.makeText(getActivity(), "text"+contactList.size(), Toast.LENGTH_SHORT).show();
-//			Toast.makeText(getActivity(), "image"+contactList2.size(), Toast.LENGTH_SHORT).show();
-			 
-			 
+			// Toast.makeText(getActivity(), "text"+contactList.size(),
+			// Toast.LENGTH_SHORT).show();
+			// Toast.makeText(getActivity(), "image"+contactList2.size(),
+			// Toast.LENGTH_SHORT).show();
+
 		}
 
 	}
-	
+
 	public void EventImageloder() {
 
 		@SuppressWarnings("deprecation")
@@ -144,5 +154,16 @@ public class News_phd extends SherlockFragment {
 				.displayer(new RoundedBitmapDisplayer(20)).build();
 
 	}
-	
+
+	// @Override
+	// public void onDetach() {
+	// super.onDetach();
+	// getActivity().getSupportFragmentManager().popBackStack();
+	// }
+	@Override
+	public void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		context().getSupportFragmentManager().popBackStack();
+	}
 }

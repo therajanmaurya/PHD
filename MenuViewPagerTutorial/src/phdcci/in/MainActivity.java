@@ -10,6 +10,7 @@ import phdcci.in.home.Home_schemes;
 import phdcci.in.home.Home_trading;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
+import android.app.DialogFragment;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -99,8 +100,8 @@ public class MainActivity extends SherlockFragmentActivity {
 
 		// Set a custom shadow that overlays the main content when the drawer
 		// opens
-		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
-				GravityCompat.START);
+//		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
+//				GravityCompat.START);
 
 		// Pass string arrays to MenuListAdapter
 		mMenuAdapter = new MenuListAdapter(MainActivity.this, title, subtitle,
@@ -119,7 +120,7 @@ public class MainActivity extends SherlockFragmentActivity {
 		// ActionBarDrawerToggle ties together the the proper interactions
 		// between the sliding drawer and the action bar app icon
 		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-				R.drawable.ic_drawer, R.string.drawer_open,
+				R.drawable.ic_launcher, R.string.drawer_open,
 				R.string.drawer_close) {
 
 			public void onDrawerClosed(View view) {
@@ -305,6 +306,7 @@ public class MainActivity extends SherlockFragmentActivity {
 			Toast.makeText(this, "null", Toast.LENGTH_SHORT).show();
 		else
 			parentLayout.addView(inflater.inflate(R.layout.action_bar, parentLayout, false), 1);*/
-		setContentView(R.layout.action_bar);
+		DialogFragment aboutD = new aboutDialog();
+		aboutD.show(getFragmentManager(), "ABOUT_DIALOG");
 	}
 }

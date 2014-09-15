@@ -3,11 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    android:background="#9ee5a6"
     android:padding="15dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="fill_parent" >
+        android:layout_height="fill_parent">
 
         <ImageView
             android:layout_width="fill_parent"
@@ -21,13 +22,13 @@
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Sushil Muhnot"
+            android:text="Board of Directors"
             android:layout_below="@id/imageView"
             android:id="@+id/Bsidbi"/>
         <ScrollView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/sushil"
+            android:layout_below="@+id/Bsidbi"
             android:id="@+id/scrollView">
 
             <TextView

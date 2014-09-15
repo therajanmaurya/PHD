@@ -2,6 +2,8 @@ package phdcci.in.home;
 
 import phdcci.in.R;
 import phdcci.in.news.New_sub_niesbud;
+import phdcci.in.news.News_msme;
+import phdcci.in.news.News_phd;
 import phdcci.in.news.News_sidbi;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -21,13 +23,26 @@ public class Home_news extends SherlockFragment {
 		FrameLayout fr = (FrameLayout) rootView.findViewById(R.id.PhdFram);
 		FrameLayout fr1 = (FrameLayout) rootView.findViewById(R.id.niesbud);
 		FrameLayout fr2 = (FrameLayout) rootView.findViewById(R.id.msme);
-
+		FrameLayout fr3 = (FrameLayout) rootView.findViewById(R.id.Nsidbi);
 		fr2.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				News_sidbi firstFragment = new  News_sidbi();
+				firstFragment.setArguments(getActivity().getIntent()
+						.getExtras());
+				getActivity().getSupportFragmentManager().beginTransaction()
+						.replace(R.id.content_frame, firstFragment).addToBackStack(null).commit();
+			}
+		});
+		
+		fr.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				News_phd firstFragment = new  News_phd();
 				firstFragment.setArguments(getActivity().getIntent()
 						.getExtras());
 				getActivity().getSupportFragmentManager().beginTransaction()
@@ -48,6 +63,18 @@ public class Home_news extends SherlockFragment {
 			}
 		});
 
+		fr3.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				News_msme firstFragment1 = new News_msme();
+				firstFragment1.setArguments(getActivity().getIntent()
+						.getExtras());
+				getActivity().getSupportFragmentManager().beginTransaction()
+						.replace(R.id.content_frame, firstFragment1).addToBackStack(null).commit();
+			}
+		});
 		return rootView;
 	}
 

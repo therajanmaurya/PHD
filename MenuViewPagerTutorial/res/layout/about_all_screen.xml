@@ -28,9 +28,9 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom|center_horizontal"
+                android:layout_gravity="center"
                 android:scaleType="center"
-                android:src="@drawable/img_main_googlecards" />
+                android:src="@drawable/about_phd_chamber" />
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -68,9 +68,9 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right|bottom"
+                    android:layout_gravity="center"
                     android:scaleType="center"
-                    android:src="@drawable/traning" />
+                    android:src="@drawable/nsic" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -101,9 +101,9 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right|bottom"
+                    android:layout_gravity="center"
                     android:scaleType="center"
-                    android:src="@drawable/img_main_appearance" />
+                    android:src="@drawable/about_niesbud" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -141,9 +141,9 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right|bottom"
+                    android:layout_gravity="center"
                     android:scaleType="center"
-                    android:src="@drawable/img_main_gridview" />
+                    android:src="@drawable/sidbi1" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -173,11 +173,12 @@
                  >
 
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right|bottom"
+                    android:layout_gravity="center"
                     android:scaleType="center"
-                    android:src="@drawable/img_main_stickylistheaders" />
+                    
+                    android:src="@drawable/msmelogo1" />
 
                 <FrameLayout
                     android:layout_width="match_parent"

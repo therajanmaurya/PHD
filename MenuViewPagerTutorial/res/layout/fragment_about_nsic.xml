@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    android:background="#d6956b"
     android:padding="15dp">
 
     <RelativeLayout
@@ -18,22 +19,18 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />
 
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="director_name"
-            android:layout_below="@id/imageView"
-            android:id="@+id/Bnsic"/>
         <ScrollView
+            android:id="@+id/scrollView"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/arun"
-            android:id="@+id/scrollView">
+            android:layout_below="@id/imageView" >
 
             <TextView
+                android:id="@+id/textView"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_height="2328dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
                 android:text="It was established in 1955 to promote and develop micro and smalls scale industries and enterprises in the country. It was originally founded as a Government of India agency later made into a fully owned government corporation.
                 \n Operation\n
 National Small Industries Corporation Ltd. (NSIC), is an ISO 9001-2008 certified Government of India Enterprise under Ministry of Micro, Small and Medium Enterprises (MSME).
@@ -41,18 +38,13 @@ National Small Industries Corporation Ltd. (NSIC), is an ISO 9001-2008 certified
 NSIC operates through countrywide network of offices and Technical Centres in the Country. To manage operations in African countries, NSIC operates from its office in Johannesburg, South Africa. In addition, NSIC has set up Training cum Incubation Centre and with a large professional manpower, NSIC provides a package of services as per the needs of MSME sector.
 
 Objectives\n
-Government of India in order to promote small and budding entrepreneurs of post independent India, decided to establish a government agency which can mediate and provide help to small scale industries (SSI). As such they established National Small Industries Corporation with objectives to provide machinery on hire purchase basis and assisting and marketing in exports. Further, SSI's registered with NSIC were exempted from paying Earnest money and provided facility of free participation in government tendered purchases. Also for training persons the training facilities centers and for providing assistance in modernizing the small industries several branches of NSIC were opened up by government over the years in several big and small towns, where small industries were growing.
+Government of India in order to promote small and budding entrepreneurs of post independent India, decided to establish a government agency which can mediate and provide help to small scale industries (SSI). As such they established National Small Industries Corporation with objectives to provide machinery on hire purchase basis and assisting and marketing in exports. Further, SSI&apos;s registered with NSIC were exempted from paying Earnest money and provided facility of free participation in government tendered purchases. Also for training persons the training facilities centers and for providing assistance in modernizing the small industries several branches of NSIC were opened up by government over the years in several big and small towns, where small industries were growing.
 
 NSIC also helps in organizing supply of raw materials like coal, iron, steel and other materials and even machines needed by small scale private industries by mediating with other government companies like Coal India Limited, Steel Authority of India Limited, Hindustan Copper Limited and many others, who produce this materials to provide same at concessional rates to SSIs. Further, it also provides assistance to small scale industries by taking orders from Government of India owned enterprises and procures these machineries from SSI units registered with them, thus providing a complete assistance right from financing, training, providing raw materials for manufacturing and marketing of finished products of small scale industries, which would otherwise not be able to survive in face of competition from large and big business conglomerates. It also helps SSI by mediating with government owned banks to provide cheap finance and loans to budding small private industries of India.
 
 Nowadays, it is also providing assistance by setting up incubation centers in other continents and also international technology fairs to provide aspiring entrepreneurs and emerging small enterprises a platform to develop skills, identify appropriate technology, provide hands-on experience on the working projects, manage funds through banks, and practical knowledge on how to set up an enterprise"
-                android:id="@+id/textView"
-
-                android:textSize="20sp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                />
-
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="20sp" />
 
         </ScrollView>
 

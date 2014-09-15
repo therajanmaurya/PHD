@@ -18,7 +18,7 @@
         android:scrollbarStyle="outsideOverlay" >
 
         <FrameLayout
-            android:id="@+id/phd"
+            android:id="@+id/Sphd"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_marginBottom="4dp"
@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|center_horizontal"
                 android:scaleType="center"
-                android:src="@drawable/img_main_googlecards" />
+                android:src="@drawable/schemes5" />
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -58,7 +58,7 @@
 
             <FrameLayout
                 android:layout_width="0dp"
-                android:id="@+id/nsic"
+                android:id="@+id/Snsic"
                 android:layout_height="match_parent"
                 android:layout_marginRight="2dp"
                 android:layout_weight="1"
@@ -68,9 +68,9 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right|bottom"
+                    android:layout_gravity="center"
                     android:scaleType="center"
-                    android:src="@drawable/traning" />
+                    android:src="@drawable/schemes1" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -92,7 +92,7 @@
             <FrameLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:id="@+id/niesbud"
+                android:id="@+id/Sniesbud"
                 android:layout_marginLeft="2dp"
                 android:layout_weight="1"
                 android:foreground="?android:attr/selectableItemBackground"
@@ -101,9 +101,9 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right|bottom"
+                    android:layout_gravity="center"
                     android:scaleType="center"
-                    android:src="@drawable/img_main_appearance" />
+                    android:src="@drawable/schemes2" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -131,7 +131,7 @@
 
             <FrameLayout
                 android:layout_width="0dp"
-                android:id="@+id/sidbi"
+                android:id="@+id/Ssidbi"
                 android:layout_height="match_parent"
                 android:layout_marginRight="2dp"
                 android:layout_weight="1"
@@ -141,9 +141,9 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right|bottom"
+                    android:layout_gravity="center"
                     android:scaleType="center"
-                    android:src="@drawable/img_main_gridview" />
+                    android:src="@drawable/schemes4" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -175,9 +175,9 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right|bottom"
+                    android:layout_gravity="center"
                     android:scaleType="center"
-                    android:src="@drawable/img_main_stickylistheaders" />
+                    android:src="@drawable/schemes3" />
 
                 <FrameLayout
                     android:layout_width="match_parent"

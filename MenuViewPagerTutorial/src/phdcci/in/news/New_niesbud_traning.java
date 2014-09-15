@@ -6,29 +6,31 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import phdcci.in.ConnectionDetector;
 import phdcci.in.R;
+import phdcci.in.ServiceHandler;
 import phdcci.in.Adapter.Adapter_niesbud_traning;
-import phdcci.in.Adapter.Adapter_niesbud_workshop;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockFragment;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.teamDPSR.util.ServiceHandler;
 
 public class New_niesbud_traning extends SherlockFragment {
 	int n;
 	public static final int INITIAL_DELAY_MILLIS = 300;
-	public static ArrayList<String> contactList = new ArrayList<String>();
-	public static ArrayList<String> contactList2 = new ArrayList<String>();
+	public static ArrayList<String> contactList ;
+	public static ArrayList<String> contactList2;
 	Adapter_niesbud_traning mGoogleCardsAdapter;
 	protected ImageLoader imageLoader = ImageLoader.getInstance();
 	ProgressDialog pDialog;
@@ -37,6 +39,9 @@ public class New_niesbud_traning extends SherlockFragment {
 	String url = "http://pa1pal.tk/niesbud_training.txt";
 	ListView listView;
 	int nn;
+	ConnectionDetector cd;
+	Boolean isInternetPresent = false;
+
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,81 +49,28 @@ public class New_niesbud_traning extends SherlockFragment {
 		// Get the view from fragmenttab1.xml
 		final View view = inflater.inflate(R.layout.fragment_news, container,
 				false);
+		contactList = null;
+		contactList2 = null;
+		contactList = new ArrayList<String>();
+		contactList2 = new ArrayList<String>();
 		listView = (ListView) view
 				.findViewById(R.id.activity_googlecards_listview);
 
-		GetContacts news = new GetContacts();
-		news.execute();
-
-//		listView.setOnItemClickListener(new OnItemClickListener() {
-//
-//			@Override
-//			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-//					long arg3) {
-//				// TODO Auto-generated method stub
-//				final TextView textview = (TextView) view
-//						.findViewById(R.id.activity_googlecards_card_imageview);
 		
-//
-//				if (textview.getVisibility() == View.GONE) {
-//
-//					ScaleAnimation anim = new ScaleAnimation(1, 1, 0, 1);
-//					anim.setDuration(300);
-//					anim.setFillAfter(true);
-//					textview.startAnimation(anim);
-//					anim.setAnimationListener(new AnimationListener() {
-//
-//						@Override
-//						public void onAnimationEnd(Animation animation) {
-//							// TODO Auto-generated method stub
-//
-//						}
-//
-//						@Override
-//						public void onAnimationRepeat(Animation animation) {
-//							// TODO Auto-generated method stub
-//
-//						}
-//
-//						@Override
-//						public void onAnimationStart(Animation animation) {
-//							// TODO Auto-generated method stub
-////							if (textview.getVisibility() == View.GONE) {
-////								textview
-////										.setVisibility(View.VISIBLE);
-////							} else {
-////								textview.setVisibility(View.GONE);
-////							}
-//							textview
-//							.setVisibility(View.VISIBLE);
-//						}
-//
-//					});
-//
-//				} else {
-//					ScaleAnimation anim = new ScaleAnimation(1, 1, 1, 0);
-//					anim.setDuration(500);
-//					anim.setFillAfter(true);
-//					textview.startAnimation(anim);
-//					anim.setAnimationListener(new AnimationListener() {
-//
-//						@Override
-//						public void onAnimationStart(Animation animation) {
-//						}
-//
-//						@Override
-//						public void onAnimationRepeat(Animation animation) {
-//						}
-//
-//						@Override
-//						public void onAnimationEnd(Animation animation) {
-//							textview.setVisibility(View.GONE);
-//						}
-//					});
-//				}
-//
-//			}
-//		});
+
+		cd = new ConnectionDetector(getActivity().getApplicationContext());
+		isInternetPresent = cd.isConnectingToInternet();
+		if (isInternetPresent) {
+			GetContacts news = new GetContacts();
+			news.execute();
+
+		} else {
+
+			Toast toast = Toast.makeText(getActivity(),
+					"internet connection Error", Toast.LENGTH_SHORT);
+			toast.setGravity(Gravity.CENTER, 0, 0);		
+			toast.show();
+		}
 
 		return view;
 	}
@@ -131,12 +83,9 @@ public class New_niesbud_traning extends SherlockFragment {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			// Showing progress dialog
-			// pDialog=ProgressDialog.show(, title, message)
-			// pDialog = new ProgressDialog(context);
-			// pDialog.setMessage("Please wait...");
-			// pDialog.setCancelable(false);
-			// pDialog.show();
+			pDialog = ProgressDialog.show(getActivity(), null,
+					"Loading ........", true);
+			pDialog.setCancelable(true);
 
 		}
 
@@ -180,7 +129,7 @@ public class New_niesbud_traning extends SherlockFragment {
 			super.onPostExecute(result);
 			// Dismiss the progress dialog
 			// if (pDialog.isShowing())
-			// pDialog.dismiss();
+			 pDialog.dismiss();
 			mGoogleCardsAdapter = new Adapter_niesbud_traning(getActivity()
 					.getApplicationContext(), R.layout.niesbud_workshop,
 					options, contactList2, contactList);

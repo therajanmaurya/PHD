@@ -6,9 +6,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import phdcci.in.ConnectionDetector;
 import phdcci.in.R;
+import phdcci.in.ServiceHandler;
 import phdcci.in.Adapter.Adapter_finance_sidbi;
-import phdcci.in.Adapter.Adapter_niesbud_workshop;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -16,30 +17,31 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.KeyEvent;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockFragment;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.teamDPSR.util.ServiceHandler;
 
 public class Finance_sidbi extends SherlockFragment {
 	int n;
 	public static final int INITIAL_DELAY_MILLIS = 300;
 	public static ArrayList<String> description = new ArrayList<String>();
-	public static ArrayList<String> date = new ArrayList<String>();
-	public static ArrayList<String> pdfurl = new ArrayList<String>();
-
+	public static ArrayList<String> date ;
+	public static ArrayList<String> pdfurl ;
 	Adapter_finance_sidbi mGoogleCardsAdapter;
 	protected ImageLoader imageLoader = ImageLoader.getInstance();
 	ProgressDialog pDialog;
 	Context context;
+	ConnectionDetector cd;
+	Boolean isInternetPresent = false;
 	static DisplayImageOptions options;
 	String url = "http://pa1pal.tk/sidbi_finance.txt";
 	ListView listView;
@@ -53,27 +55,45 @@ public class Finance_sidbi extends SherlockFragment {
 		// Get the view from fragmenttab1.xml
 		final View view = inflater.inflate(R.layout.fragment_news, container,
 				false);
+		Toast.makeText(getActivity(), "For more Detail Click on item", Toast.LENGTH_SHORT).show();
+		date = null;
+		pdfurl = null;
+		date = new ArrayList<String>();
+		pdfurl = new ArrayList<String>();
 		listView = (ListView) view
 				.findViewById(R.id.activity_googlecards_listview);
 
-		GetContacts news = new GetContacts();
-		news.execute();
+		cd = new ConnectionDetector(getActivity().getApplicationContext());
+		isInternetPresent = cd.isConnectingToInternet();
+		if (isInternetPresent) {
+			GetContacts news = new GetContacts();
+			news.execute();
 
-		listView.setOnItemClickListener(new OnItemClickListener() {
+			listView.setOnItemClickListener(new OnItemClickListener() {
 
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1,
-					int position, long arg3) {
-				// TODO Auto-generated method stub
-				if (pdfurl.get(position) != "null") {
-					Intent myWebLink = new Intent(
-							android.content.Intent.ACTION_VIEW, Uri
-									.parse(pdfurl.get(position)));
-					startActivity(myWebLink);
+				@Override
+				public void onItemClick(AdapterView<?> arg0, View arg1,
+						int position, long arg3) {
+					// TODO Auto-generated method stub
+					if (pdfurl.get(position) != "null") {
+						Intent myWebLink = new Intent(
+								android.content.Intent.ACTION_VIEW, Uri
+										.parse(pdfurl.get(position)));
+						startActivity(myWebLink);
+					}
+
 				}
+			});
 
-			}
-		});
+		} else {
+
+			Toast toast = Toast.makeText(getActivity(),
+					"internet connection Error", Toast.LENGTH_SHORT);
+			toast.setGravity(Gravity.CENTER, 0, 0);		
+			toast.show();
+		}
+		
+		
 
 		return view;
 	}
@@ -99,12 +119,9 @@ public class Finance_sidbi extends SherlockFragment {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			// Showing progress dialog
-			// pDialog=ProgressDialog.show(, title, message)
-			// pDialog = new ProgressDialog(context);
-			// pDialog.setMessage("Please wait...");
-			// pDialog.setCancelable(false);
-			// pDialog.show();
+			pDialog = ProgressDialog.show(getActivity(), null,
+					"Loading ........", true);
+			pDialog.setCancelable(true);
 
 		}
 
@@ -147,7 +164,7 @@ public class Finance_sidbi extends SherlockFragment {
 			super.onPostExecute(result);
 			// Dismiss the progress dialog
 			// if (pDialog.isShowing())
-			// pDialog.dismiss();
+			 pDialog.dismiss();
 			mGoogleCardsAdapter = new Adapter_finance_sidbi(getActivity()
 					.getApplicationContext(), R.layout.niesbud_workshop,
 					options, date);

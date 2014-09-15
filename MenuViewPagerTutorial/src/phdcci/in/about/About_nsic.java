@@ -19,20 +19,7 @@ public class About_nsic extends SherlockFragment {
 			Bundle savedInstanceState) {
 		// Get the view from fragmenttab2.xml
 		View view = inflater.inflate(R.layout.fragment_about_nsic, container, false);
-		Button button = (Button)view.findViewById(R.id.Bnsic);
-		button.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				
-				Intent myWebLink = new Intent(
-						android.content.Intent.ACTION_VIEW, Uri
-								.parse(""));
-				startActivity(myWebLink);
-				
-			}
-		});
+		 
 		
 		return view;
 	}
